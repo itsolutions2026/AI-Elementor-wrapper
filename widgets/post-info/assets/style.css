@@ -1,0 +1,9 @@
+.elementor-column .elementor-column-wrap .elementor-widget-wrap .elementor-widget .elementor-widget-container .elementor-inline-items {
+  align-items: center;
+}
+.elementor-widget.elementor-align-center .elementor-icon-list-item:after {
+  margin: auto;
+}
+.elementor-widget.elementor-align-center .elementor-inline-terms .elementor-icon-list-item:after {
+  margin: initial;
+}
