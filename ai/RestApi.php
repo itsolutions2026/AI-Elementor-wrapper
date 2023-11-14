@@ -31,32 +31,32 @@ class RestApi {
             ),
         'builder/simplify_language' =>
             array(
-                'content' => 'Please simplify the following content. \n %s',
+                'content' => 'Please simplify the following content. your response should be less than 500 words. \n %s',
                 'params' => ['text']
             ),
         'builder/make_it_longer' =>
             array(
-                'content' => 'Please convert the following content into longer content for SEO-optimized and highly relevant website content. \n %s',
+                'content' => 'Please convert the following content into longer content for SEO-optimized and highly relevant website content. your response should be less than 500 words. \n %s',
                 'params' => ['text']
             ),
         'builder/make_it_shorter' =>
             array(
-                'content' => 'Please convert the following content into shorter content and more optimized.. \n %s',
+                'content' => 'Please convert the following content into shorter content and more optimized. your response should be less than 500 words. \n %s',
                 'params' => ['text']
             ),
         'builder/fix_spelling_and_grammar' =>
             array(
-                'content' => 'Please correct the spelling and grammar in the following content. \n %s',
+                'content' => 'Please correct the spelling and grammar in the following content. your response should be less than 500 words. \n %s',
                 'params' => ['text']
             ),
         'builder/change_tone' =>
             array(
-                'content' => 'Please convert the following into a more %s tone. \n %s',
+                'content' => 'Please convert the following into a more %s tone. your response should be less than 500 words. \n %s',
                 'params' => ['tone', 'text']
             ),
         'builder/translate_to' =>
             array(
-                'content' => 'Please translate the following into %s. \n %s',
+                'content' => 'Please translate the following into %s. your response should be less than 500 words. \n %s',
                 'params' => ['language', 'text']
             )
     );
@@ -166,13 +166,12 @@ class RestApi {
                         ]
                     ],
                     'temperature' => 1.0,
-                    'max_tokens' => 4000,
                     'frequency_penalty' => 0,
                     'presence_penalty' => 0,
                 ]);
 
                 $d = json_decode($complete);
-
+                error_log(print_r($complete, 1));
                 if(isset($d->error->code) && $d->error->code == 'context_length_exceeded'){
                     return 'input_is_long';
                 }
